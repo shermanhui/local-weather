@@ -39,11 +39,13 @@
             let coordinates = position.coords,
               lat = coordinates.latitude.toFixed(3),
               long = coordinates.longitude.toFixed(3),
-              ep = endpoint + '?lat=' + lat + '&lon=' + long;
+              appid = '&APPID=061f24cf3cde2f60644a8240302983f2',
+              ep = 'http://' + endpoint + 'lat=' + lat + '&lon=' + long + appid + '&callback=JSON_CALLBACK',
+              data = null;
 
-              console.log(coordinates);
+              return $http.jsonp(ep);
 
-            demo.innerHTML = 'Your coordinates are, ' + coordinates.latitude + ', ' + coordinates.longitude;
+            // demo.innerHTML = 'Your coordinates are, ' + lat  + ', ' + long;
           });
         } else {
           console.log('geolocation not available, please enable');
@@ -57,7 +59,14 @@
   function mainCtrl($scope, $q, weatherAPI, endpoint) {
     let self = $scope.ctrl = this;
 
-    weatherAPI.getData();
+    console.log(weatherAPI.getData());
+
+    // weatherAPI.getData().then(function(response){
+    //     data = response.data;
+    //     //console.log(data);
+    //
+    //     return data;
+    // });
   }
 
   mainCtrl.$inject = ['$scope', '$q', 'weatherAPI', 'endpoint'];
