@@ -33,23 +33,8 @@
 
   function weatherAPI($http, $q, endpoint) {
     return {
-      getData: function() {
-        if ('geolocation' in navigator) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            let coordinates = position.coords,
-              lat = coordinates.latitude.toFixed(3),
-              long = coordinates.longitude.toFixed(3),
-              appid = '&APPID=061f24cf3cde2f60644a8240302983f2',
-              ep = 'http://' + endpoint + 'lat=' + lat + '&lon=' + long + appid + '&callback=JSON_CALLBACK',
-              data = null;
-
-              return $http.jsonp(ep);
-
-            // demo.innerHTML = 'Your coordinates are, ' + lat  + ', ' + long;
-          });
-        } else {
-          console.log('geolocation not available, please enable');
-        }
+      getData: function(url) {
+        return $http.jsonp(url);
       }
     };
   }
@@ -58,6 +43,24 @@
 
   function mainCtrl($scope, $q, weatherAPI, endpoint) {
     let self = $scope.ctrl = this;
+
+    if ('geolocation' in navigator) {
+     return navigator.geolocation.getCurrentPosition(function(position) {
+        let coordinates = position.coords,
+          lat = coordinates.latitude.toFixed(3),
+          long = coordinates.longitude.toFixed(3),
+          appid = '&APPID=061f24cf3cde2f60644a8240302983f2',
+          url = 'http://' + endpoint + 'lat=' + lat + '&lon=' + long + appid + '&callback=JSON_CALLBACK';
+
+        weatherAPI.getData(url).then(function(res) {
+            self.data = res.data;
+            console.log(self.data);
+            return self.data;
+        });
+      });
+    } else {
+      alert('please enable geolocation');
+    }
 
     console.log(weatherAPI.getData());
 
