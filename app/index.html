@@ -29,8 +29,8 @@
 
     <div class="container" ng-controller="mainCtrl as ctrl">
 
-      <div id="location" ng-cloak>Your Location is {{ctrl.data.name}}</div>
-      <div ng-cloak> The current weather is <span ng-bind="ctrl.data.weather[0].description"></span></div>
+      <div>Your Location is <span ng-bind="ctrl.data.name"></span></div>
+      <div> The current weather is <span ng-bind="ctrl.data.weather[0].description"></span></div>
 
     </div>
 

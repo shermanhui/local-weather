@@ -77,6 +77,7 @@
   angular
     .module('weatherApp', [])
     .constant('endpoint', 'api.openweathermap.org/data/2.5/weather?')
+    .constant('conditions', ['thunderstorm', 'drizzle', 'rain', 'snow', 'clear', 'clouds', 'atmosphere', 'extreme', 'additional'])
     .service('weatherAPI', weatherAPI)
     .controller('mainCtrl', mainCtrl);
 })();
