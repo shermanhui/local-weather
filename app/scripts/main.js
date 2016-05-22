@@ -63,13 +63,6 @@
     }
 
     console.log(weatherAPI.getData());
-
-    // weatherAPI.getData().then(function(response){
-    //     data = response.data;
-    //     //console.log(data);
-    //
-    //     return data;
-    // });
   }
 
   mainCtrl.$inject = ['$scope', '$q', 'weatherAPI', 'endpoint'];
