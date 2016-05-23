@@ -5,7 +5,8 @@
     "bootstrap-sass": "~3.3.5",
     "modernizr": "~2.8.1",
     "angular": "^1.5.5",
-    "moment": "^2.13.0"
+    "moment": "^2.13.0",
+    "weather-icons": "^2.0.10"
   },
   "overrides": {
     "bootstrap-sass": {

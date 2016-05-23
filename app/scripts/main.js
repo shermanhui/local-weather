@@ -13,6 +13,12 @@
 
   weatherAPI.$inject = ['$http', '$q', 'endpoint'];
 
+  function displayWeather(type){
+
+  }
+
+  displayWeather.$inject = [];
+
   function mainCtrl($scope, $q, weatherAPI, endpoint, conditions) {
     let self = $scope.ctrl = this;
 
@@ -21,28 +27,45 @@
     self.time = new moment().format("h:mm:ss");
 
     self.displayWeather = function(type){
-        switch(type){
-            case 'thunderstorm':
-                break;
-            case 'drizzle':
-                break;
-            case 'rain':
-                break;
-            case 'snow':
-                break;
-            case 'clear':
-                break;
-            case 'clouds':
-                break;
-            case 'atmosphere':
-                break;
-            case 'extreme':
-                break;
-            case 'additional':
-                break;
-            default:
+        let id = document.getElementById('icon');
+        if (type >= 200 && type <= 232) {
+            id.className += " wi-day-thunderstorm"
+        } else if (type >= 300 && type <= 321) {
 
+        } else if (type >= 500 && type <= 531) {
+
+        } else if (type >= 600 && type <= 622) {
+
+        } else if (type >= 701 && type <= 781) {
+
+        } else if (type == 800) {
+
+        } else if (type >= 801 && type <= 804){
+            id.className += " wi-day-cloudy"
+        } else {
+            alert ('either something crazy happening or nothing at all');
         }
+
+            // case 'thunderstorm':
+            //     break;
+            // case 'drizzle':
+            //     break;
+            // case 'rain':
+            //     break;
+            // case 'snow':
+            //     break;
+            // case 'clear':
+            //     break;
+            // case 'clouds':
+            //     alert('clouds!')
+            //     break;
+            // case 'atmosphere':
+            //     break;
+            // case 'extreme':
+            //     break;
+            // case 'additional':
+            //     break;
+            // default:
     };
 
     self.changeUnits = function(){
@@ -60,6 +83,9 @@
 
         weatherAPI.getData(url).then(function(res) {
             self.data = res.data;
+
+            self.displayWeather(self.data.weather[0].id);
+
             console.log(self.data);
             return self.data;
         });
@@ -67,9 +93,7 @@
     } else {
       alert('please enable geolocation');
     }
-
-    console.log(weatherAPI.getData());
-  }
+}
 
   mainCtrl.$inject = ['$scope', '$q', 'weatherAPI', 'endpoint', 'conditions'];
 

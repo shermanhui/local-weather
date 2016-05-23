@@ -11,6 +11,10 @@
 
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="/bower_components/weather-icons/css/weather-icons.css" />
+    <link rel="stylesheet" href="/bower_components/weather-icons/css/weather-icons.min.css" />
+    <link rel="stylesheet" href="/bower_components/weather-icons/css/weather-icons-wind.css" />
+    <link rel="stylesheet" href="/bower_components/weather-icons/css/weather-icons-wind.min.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -37,9 +41,10 @@
                 Your Location is <span ng-bind="ctrl.data.name"></span>
             </p>
             <p ng-bind="ctrl.data.main.temp"></p>
-            <p>
-                The current weather is <span ng-bind="ctrl.data.weather[0].description"></span>
-            </p>
+            <div>
+                <i class="wi" id="icon"></i>
+                <p>The current weather is <span ng-bind="ctrl.data.weather[0].description"></span></p>
+            </div>
             <p>
                 The current time is <span ng-bind="ctrl.time"></span>
             </p>
