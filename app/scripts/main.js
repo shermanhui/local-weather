@@ -18,13 +18,15 @@
 
     self.data = null;
 
+
     if ('geolocation' in navigator) {
      return navigator.geolocation.getCurrentPosition(function(position) {
         let coordinates = position.coords,
           lat = coordinates.latitude.toFixed(3),
           long = coordinates.longitude.toFixed(3),
           appid = '&APPID=061f24cf3cde2f60644a8240302983f2',
-          url = 'http://' + endpoint + 'lat=' + lat + '&lon=' + long + appid + '&callback=JSON_CALLBACK';
+          units = '&units=metric',
+          url = 'http://' + endpoint + 'lat=' + lat + '&lon=' + long + units + appid + '&callback=JSON_CALLBACK';
 
         weatherAPI.getData(url).then(function(res) {
             self.data = res.data;
