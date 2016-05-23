@@ -28,9 +28,19 @@
     <![endif]-->
 
     <div class="container" ng-controller="mainCtrl as ctrl">
-
-      <div>Your Location is <span ng-bind="ctrl.data.name"></span></div>
-      <div> The current weather is <span ng-bind="ctrl.data.weather[0].description"></span></div>
+        <div class="header text-center">
+            <h2>Free Code Camp</h2>
+            <h3>Weather App</h3>
+        </div>
+        <div class="text-center">
+            <p>
+                Your Location is <span ng-bind="ctrl.data.name"></span>
+            </p>
+            <p ng-bind="ctrl.data.main.temp"></p>
+            <p>
+                The current weather is <span ng-bind="ctrl.data.weather[0].description"></span>
+            </p>
+        </div>
 
     </div>
 
