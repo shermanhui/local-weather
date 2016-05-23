@@ -18,7 +18,34 @@
 
     self.data = null;
 
-    self.displayWeather = function(){
+    self.time = new moment().format("h:mm:ss");
+
+    self.displayWeather = function(type){
+        switch(type){
+            case 'thunderstorm':
+                break;
+            case 'drizzle':
+                break;
+            case 'rain':
+                break;
+            case 'snow':
+                break;
+            case 'clear':
+                break;
+            case 'clouds':
+                break;
+            case 'atmosphere':
+                break;
+            case 'extreme':
+                break;
+            case 'additional':
+                break;
+            default:
+
+        }
+    };
+
+    self.changeUnits = function(){
 
     };
 
@@ -44,7 +71,7 @@
     console.log(weatherAPI.getData());
   }
 
-  mainCtrl.$inject = ['$scope', '$q', 'weatherAPI', 'endpoint'];
+  mainCtrl.$inject = ['$scope', '$q', 'weatherAPI', 'endpoint', 'conditions'];
 
   angular
     .module('weatherApp', [])
