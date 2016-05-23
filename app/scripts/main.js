@@ -3,7 +3,7 @@
 
   let demo = document.getElementById('location');
 
-  function weatherAPI($http, $q, endpoint) {
+  function weatherAPI($http, $q) {
     return {
       getData: function(url) {
         return $http.jsonp(url);
@@ -13,11 +13,14 @@
 
   weatherAPI.$inject = ['$http', '$q', 'endpoint'];
 
-  function mainCtrl($scope, $q, weatherAPI, endpoint) {
+  function mainCtrl($scope, $q, weatherAPI, endpoint, conditions) {
     let self = $scope.ctrl = this;
 
     self.data = null;
 
+    self.displayWeather = function(){
+
+    };
 
     if ('geolocation' in navigator) {
      return navigator.geolocation.getCurrentPosition(function(position) {
