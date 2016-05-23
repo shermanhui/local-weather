@@ -13,35 +13,60 @@
 
   weatherAPI.$inject = ['$http', '$q', 'endpoint'];
 
-  function displayWeather(type){
+  function displayCurrentTime($interval, dateFilter){
+      function link(scope, element, attrs) {
+        let format,
+          timeoutId;
+
+        function updateTime() {
+          element.text(new moment().format('h:mm:ss a'));
+        }
+
+        scope.$watch(attrs.myCurrentTime, function(value) {
+          format = value;
+          updateTime();
+        });
+
+        element.on('$destroy', function() {
+          $interval.cancel(timeoutId);
+        });
+
+        timeoutId = $interval(function() {
+          updateTime();
+        }, 1000);
+      }
+
+      return {
+          link: link
+      };
 
   }
 
-  displayWeather.$inject = [];
+  displayCurrentTime.$inject = ['$interval', 'dateFilter'];
 
   function mainCtrl($scope, $q, weatherAPI, endpoint, conditions) {
     let self = $scope.ctrl = this;
 
     self.data = null;
 
-    self.time = new moment().format("h:mm:ss");
+    //self.time = new moment().format("h:mm:ss");
 
     self.displayWeather = function(type){
         let id = document.getElementById('icon');
         if (type >= 200 && type <= 232) {
-            id.className += " wi-day-thunderstorm"
+            id.className += ' wi-day-thunderstorm';
         } else if (type >= 300 && type <= 321) {
-
+            id.className += ' wi-day-sprinkle';
         } else if (type >= 500 && type <= 531) {
-
+            id.className += 'wi-day-rain';
         } else if (type >= 600 && type <= 622) {
-
+            id.className += 'wi-day-snow-wind';
         } else if (type >= 701 && type <= 781) {
-
+            id.className += 'wi-day-cloudy-windy';
         } else if (type == 800) {
-
+            id.className += 'wi-day-sunny';
         } else if (type >= 801 && type <= 804){
-            id.className += " wi-day-cloudy"
+            id.className += ' wi-day-cloudy';
         } else {
             alert ('either something crazy happening or nothing at all');
         }
@@ -101,6 +126,7 @@
     .module('weatherApp', [])
     .constant('endpoint', 'api.openweathermap.org/data/2.5/weather?')
     .constant('conditions', ['thunderstorm', 'drizzle', 'rain', 'snow', 'clear', 'clouds', 'atmosphere', 'extreme', 'additional'])
+    .directive('displayCurrentTime', displayCurrentTime)
     .service('weatherAPI', weatherAPI)
     .controller('mainCtrl', mainCtrl);
 })();
