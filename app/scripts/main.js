@@ -70,27 +70,6 @@
         } else {
             alert ('either something crazy happening or nothing at all');
         }
-
-            // case 'thunderstorm':
-            //     break;
-            // case 'drizzle':
-            //     break;
-            // case 'rain':
-            //     break;
-            // case 'snow':
-            //     break;
-            // case 'clear':
-            //     break;
-            // case 'clouds':
-            //     alert('clouds!')
-            //     break;
-            // case 'atmosphere':
-            //     break;
-            // case 'extreme':
-            //     break;
-            // case 'additional':
-            //     break;
-            // default:
     };
 
     self.changeUnits = function(){
