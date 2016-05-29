@@ -1,8 +1,6 @@
 (function() {
   'use strict';
 
-  let demo = document.getElementById('location');
-
   function weatherAPI($http, $q) {
     return {
       getData: function(url) {
@@ -44,12 +42,24 @@
 
   displayCurrentTime.$inject = ['$interval', 'dateFilter'];
 
+  // function backgroundImg(){
+  //     return function(scope, element, attrs){
+  //         let url = attrs.backgroundImg;
+  //         element.css({
+  //             'background-image': 'url(' + url + ')',
+  //             'background-size': 'cover',
+  //             'background-repeat': 'no-repeat',
+  //             'background-position': 'center center'
+  //         });
+  //     };
+  // }
+  //
+  // backgroundImg.$inject = [];
+
   function mainCtrl($scope, $q, weatherAPI, endpoint, conditions) {
     let self = $scope.ctrl = this;
 
     self.data = null;
-
-    //self.time = new moment().format("h:mm:ss");
 
     self.displayWeather = function(type){
         let id = document.getElementById('icon');
@@ -88,6 +98,7 @@
         weatherAPI.getData(url).then(function(res) {
             self.data = res.data;
             self.data.area = res.data.name + ', ' + res.data.sys.country;
+            self.data.bgimg = 'images/sun.jpeg';
 
             self.displayWeather(self.data.weather[0].id);
 
