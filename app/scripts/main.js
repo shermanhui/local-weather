@@ -58,13 +58,13 @@
         } else if (type >= 300 && type <= 321) {
             id.className += ' wi-day-sprinkle';
         } else if (type >= 500 && type <= 531) {
-            id.className += 'wi-day-rain';
+            id.className += ' wi-day-rain';
         } else if (type >= 600 && type <= 622) {
-            id.className += 'wi-day-snow-wind';
+            id.className += ' wi-day-snow-wind';
         } else if (type >= 701 && type <= 781) {
-            id.className += 'wi-day-cloudy-windy';
+            id.className += ' wi-day-cloudy-windy';
         } else if (type == 800) {
-            id.className += 'wi-day-sunny';
+            id.className += ' wi-day-sunny';
         } else if (type >= 801 && type <= 804){
             id.className += ' wi-day-cloudy';
         } else {
@@ -87,6 +87,7 @@
 
         weatherAPI.getData(url).then(function(res) {
             self.data = res.data;
+            self.data.area = res.data.name + ', ' + res.data.sys.country;
 
             self.displayWeather(self.data.weather[0].id);
 
