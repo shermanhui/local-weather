@@ -8,4 +8,7 @@ Use the [Open Weather API](https://openweathermap.org/current#geo) and broswer's
 Use Angular to build out project
 Include unit testing for best practices
 
-## Optional Features
+## WIP
+
+- background should change depending on weather
+- user should be able to set location
