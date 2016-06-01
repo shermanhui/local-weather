@@ -17,7 +17,7 @@
           timeoutId;
 
         function updateTime() {
-          element.text(new moment().format('h:mm:ss a'));
+          element.text(new moment().format('h:mm a'));
         }
 
         scope.$watch(attrs.myCurrentTime, function(value) {
