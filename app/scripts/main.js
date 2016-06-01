@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  function weatherAPI($http, $q) {
+  function weatherAPI($http) {
     return {
       getData: function(url) {
         return $http.jsonp(url);
@@ -9,9 +9,9 @@
     };
   }
 
-  weatherAPI.$inject = ['$http', '$q', 'endpoint'];
+  weatherAPI.$inject = ['$http'];
 
-  function displayCurrentTime($interval, dateFilter){
+  function displayCurrentTime($interval){
       function link(scope, element, attrs) {
         let format,
           timeoutId;
@@ -66,25 +66,25 @@
         let id = document.getElementById('icon');
         if (type >= 200 && type <= 232) {
             id.className += ' wi-day-thunderstorm';
-            self.data.bgimg = 'images/thunder.jpeg';
+            document.getElementById('background').style.backgroundImage = "url('images/thunder.jpeg')";
         } else if (type >= 300 && type <= 321) {
             id.className += ' wi-day-sprinkle';
-            self.data.bgimg = 'images/sprinkle.jpeg';
+            document.getElementById('background').style.backgroundImage = "url('images/sprinkle.jpeg')";
         } else if (type >= 500 && type <= 531) {
             id.className += ' wi-day-rain';
-            self.data.bgimg = 'images/rain.jpeg';
+            document.getElementById('background').style.backgroundImage = "url('images/rain.jpeg')";
         } else if (type >= 600 && type <= 622) {
             id.className += ' wi-day-snow-wind';
-            self.data.bgimg = 'images/snow.jpeg';
+            document.getElementById('background').style.backgroundImage = "url('images/snow.jpeg')";
         } else if (type >= 701 && type <= 781) {
             id.className += ' wi-day-cloudy-windy';
-            self.data.bgimg = 'images/cloud.jpeg';
+            document.getElementById('background').style.backgroundImage = "url('images/cloud.jpeg')";
         } else if (type === 800) {
             id.className += ' wi-day-sunny';
-            self.data.bgimg = 'images/sun.jpeg';
+            document.getElementById('background').style.backgroundImage = "url('images/sun.jpeg')";
         } else if (type >= 801 && type <= 804){
             id.className += ' wi-day-cloudy';
-            self.data.bgimg = 'images/cloud.jpeg';
+            document.getElementById('background').style.backgroundImage = "url('images/cloud.jpeg')";
         } else {
             alert ('either something crazy happening or nothing at all');
         }

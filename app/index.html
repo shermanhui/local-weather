@@ -26,8 +26,8 @@
     <script src="/bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
   </head>
-  <body ng-app="weatherApp" ng-controller="mainCtrl as ctrl" ng-style="{'background-image': 'url({{ctrl.data.bgimg}})'}">
-    <!--[if lt IE 10]>
+  <body ng-app="weatherApp" ng-controller="mainCtrl as ctrl" id="background">
+    <!--[if lt IE 10]>ng-style="{'background-image': 'url({{ctrl.data.bgimg}})'}"
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
