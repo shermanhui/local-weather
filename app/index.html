@@ -27,11 +27,15 @@
     <!-- endbuild -->
   </head>
   <body ng-app="weatherApp" ng-controller="mainCtrl as ctrl" id="background">
-    <!--[if lt IE 10]>ng-style="{'background-image': 'url({{ctrl.data.bgimg}})'}"
+    <!-- ng-style="{'background-image': 'url({{ctrl.data.bgimg}})'}" -->
+    <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
-    <div class="container">
+    <div ng-hide="ctrl.data" class="spinner">
+        <div class="dot1"></div>
+        <div class="dot2"></div>
+    </div>
+    <div ng-hide="!ctrl.data" class="container info-box">
         <div class="header text-center">
             <h2>Free Code Camp</h2>
             <h3>Weather App</h3>
