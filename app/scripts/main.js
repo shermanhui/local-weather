@@ -61,7 +61,6 @@
 
     self.data = null;
 
-    //setting background image happens too early; async problem
     self.displayWeather = function(type){
         let id = document.getElementById('icon');
         if (type >= 200 && type <= 232) {
@@ -134,6 +133,7 @@
     } else {
       alert('please enable geolocation');
     }
+
 }
 
   mainCtrl.$inject = ['$scope', '$q', 'weatherAPI', 'endpoint', 'conditions'];
