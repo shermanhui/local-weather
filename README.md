@@ -10,5 +10,4 @@ Include unit testing for best practices
 
 ## WIP
 
-- background should change depending on weather
 - user should be able to set location
