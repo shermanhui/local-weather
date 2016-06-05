@@ -11,3 +11,6 @@ Include unit testing for best practices
 ## WIP
 
 - user should be able to set location
+- background image is not responsive
+- refactor code to not be reliant on jquery to set classes and styles
+- implement spinner for async loading
